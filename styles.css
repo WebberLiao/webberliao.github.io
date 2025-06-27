@@ -1,0 +1,21 @@
+h1 {
+    color: lightgray;
+}
+
+h2 {
+    color: lightgray;
+    /* color: orange; */
+}
+
+h3 {
+    color: cornflowerblue;
+}
+
+h4 {
+    color: rgb(44, 186, 44);
+}
+
+body {
+    color: lightgray;
+    background-color: #2C2C2C;
+}
