@@ -17,14 +17,4 @@
 ### [MQTT mosquitto]("./Other/MQTT/mosquitto.md")
 
 ## Contact Me
-<form action="https://formspree.io/f/webberliao0776@gmail.com" method="POST">
-    <div>
-        <label for="user">Name:</label><br>
-        <input id="name" name="name" type="text" required><br><br>
-        <label for="email">Email:</label><br>
-        <input id="email" name="email" type="email" required><br><br>
-        <label for="message">Message:</label><br>
-        <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
-        <button type="submit">Send</button>
-    </div>
-</form>
+### [Contact Me](mailto:webberliao0776@gmail.com?subject=To%20Webber&body=Hi%20Webber)
