@@ -2,6 +2,18 @@
 
 # mosquitto
 
+## Struct
+``` C
+struct mosquitto_message{
+	int mid;
+	char *topic;
+	void *payload;
+	int payloadlen;
+	int qos;
+	bool retain;
+};
+```
+
 ## Functions
 ``` C
 /* Init */
@@ -119,3 +131,7 @@ if (ret != MOSQ_ERR_SUCCESS) { // Failed
 }
 
 ```
+
+
+## Reference
+[**Formal Link**]("https://mosquitto.org/api/files/mosquitto-h.html")

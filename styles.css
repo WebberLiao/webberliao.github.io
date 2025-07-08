@@ -1,14 +1,17 @@
 h1 {
-    color: lightgray;
+    color: orange;
+    /* color: lightgray; */
 }
 
 h2 {
-    color: lightgray;
+    color: cornflowerblue;
+    /* color: lightgray; */
     /* color: orange; */
 }
 
 h3 {
-    color: cornflowerblue;
+    color: rgb(44, 186, 44);
+    /* color: cornflowerblue; */
 }
 
 h4 {
