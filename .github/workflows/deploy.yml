@@ -20,15 +20,14 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install -g markdown-to-html  # Install a Markdown to HTML converter
+          npm install
 
       - name: Convert Markdown to HTML
         run: |
-          mkdir -p output
-          markdown-to-html README.md > output/index.html  # Convert Markdown files
+          npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./output
+          publish_dir: ./
