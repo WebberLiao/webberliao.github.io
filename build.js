@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-const markdown = require('markdown-to-html').Markdown;
-
+// const markdown = require('markdown-to-html').Markdown;
+const marked = require('marked');
 const inputDir = './'; // Change this to your input directory if needed
 const outputDir = './'; // Change this to your output directory if needed
 
@@ -14,12 +14,12 @@ const convertMarkdownToHtml = (inputFile, outputFile) => {
         }
 
         // Convert Markdown to HTML
-        markdown({ gfm: true })(data, (err, html) => {
-            if (err) {
-                console.error(`Error converting ${inputFile} to HTML: ${err}`);
-                return;
-            }
-
+        // markdown({ gfm: true })(data, (err, html) => {
+        //     if (err) {
+        //         console.error(`Error converting ${inputFile} to HTML: ${err}`);
+        //         return;
+        //     }
+            const html = marked(data);
             // Write the HTML to a file
             fs.writeFile(outputFile, html, (err) => {
                 if (err) {
@@ -28,7 +28,7 @@ const convertMarkdownToHtml = (inputFile, outputFile) => {
                 }
                 console.log(`Successfully converted ${inputFile} to ${outputFile}`);
             });
-        });
+        // });
     });
 };
 

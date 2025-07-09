@@ -15,3 +15,11 @@ body {
     color: lightgray;
     background-color: #323232;
 }
+
+pre {
+    background-color: #2E2E2E;
+}
+
+code {
+    background-color: transparent;
+}
