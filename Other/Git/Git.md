@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="styles.css">
+<link rel="stylesheet" type="text/css" href="../../styles.css">
 
 ``` shell
 # Check folder difference between 2 commits

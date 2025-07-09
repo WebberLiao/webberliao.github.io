@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="styles.css">
+<link rel="stylesheet" type="text/css" href="../styles.css">
 
 # Feature
 It is used to build everything from web servers to game engines.
@@ -145,7 +145,7 @@ let new_str = format!("{} {}{}", str1, str2, chr1);
 ```
 
 # Operator
-### Arithmetic Operators
+## Arithmetic Operators
 ``` Rust
 let add = 10 + 3;       // 13
 let sub = 10 - 3;       // 7
@@ -159,7 +159,7 @@ let div = 10 / 0;       // error: this operation will panic at runtime
 let rem = 10 % 3;       // 1
 ```
 
-### Assignment Operators
+## Assignment Operators
 ``` Rust
   let mut x = 10;   // 10
   x += 5;           // 15
@@ -169,7 +169,7 @@ let rem = 10 % 3;       // 1
   x %= 4;           // 0
 ```
 
-### Comparison Operators
+## Comparison Operators
 ``` Rust
   let a = 5;
   let b = 10;
@@ -179,7 +179,7 @@ let rem = 10 % 3;       // 1
   let gr = {a > b};     // false
 ```
 
-### Logical Operators
+## Logical Operators
 ``` Rust
   let t = true;
   let f = false;

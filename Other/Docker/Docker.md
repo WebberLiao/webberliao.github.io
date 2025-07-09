@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="styles.css">
+<link rel="stylesheet" type="text/css" href="../../styles.css">
 
 # Basic
 Docker would use the same kernel and hardware to execute the containers.

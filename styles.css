@@ -4,21 +4,14 @@ h1 {
 }
 
 h2 {
-    color: cornflowerblue;
-    /* color: lightgray; */
-    /* color: orange; */
+    color: lightskyblue;
 }
 
 h3 {
-    color: rgb(44, 186, 44);
-    /* color: cornflowerblue; */
-}
-
-h4 {
-    color: rgb(44, 186, 44);
+    color: yellowgreen;
 }
 
 body {
     color: lightgray;
-    background-color: #2C2C2C;
+    background-color: #323232;
 }

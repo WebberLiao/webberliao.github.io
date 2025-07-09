@@ -1,13 +1,13 @@
-<link rel="stylesheet" type="text/css" href="./styles.css">
+<link rel="stylesheet" type="text/css" href="styles.css">
 
 # Webber Liao's Notes
 
 ## Linux
-### [OpenWrt](/OpenWrt/OpenWrt.html)
-### [UBUS](/OpenWrt/ubus.html)
-### [UCI](/OpenWrt/uci.html)
-### [Commands](/Commands.html)
-### [Other](/Other.html)
+### [OpenWrt](/Linux/OpenWrt/OpenWrt.html)
+### [UBUS](/Linux/OpenWrt/ubus.html)
+### [UCI](/Linux/OpenWrt/uci.html)
+### [Commands](/Linux/Commands.html)
+### [Other](/Linux/Other.html)
 
 ## Networking
 ### [L2 Protocols](/Networking/L2_protocols/L2_protocols.html)
@@ -25,7 +25,7 @@
 ### [MQTT mosquitto](/Other/MQTT/mosquitto.html)
 
 ## Programming
-### [C](/Programming/Docker.html)
+### [C](/Programming/C.html)
 ### [Markdown](/Programming/Markdown.html)
 ### [Rust](/Programming/Rust.html)
 

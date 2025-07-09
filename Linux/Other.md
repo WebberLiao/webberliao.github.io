@@ -1,3 +1,5 @@
+<link rel="stylesheet" type="text/css" href="../styles.css">
+
 # Syslog
 Syslog defines eight standard severity levels, each represented by a numeric value and a corresponding label.
 Syslog Severity Levels are, in order of increasing severity:

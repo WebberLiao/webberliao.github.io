@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="styles.css">
+<link rel="stylesheet" type="text/css" href="../../styles.css">
 
 # Features
 - Issue Tracing, using to trace the issues.
