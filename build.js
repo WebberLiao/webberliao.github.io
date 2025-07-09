@@ -14,14 +14,43 @@ const convertMarkdownToHtml = (inputFile, outputFile) => {
         }
 
         // Convert Markdown to HTML
-        // markdown({ gfm: true })(data, (err, html) => {
+        // markdown({ gfm: true })(data, (err, fullHtml) => {
         //     if (err) {
         //         console.error(`Error converting ${inputFile} to HTML: ${err}`);
         //         return;
         //     }
-            const html = marked(data);
+            const htmlContent = marked(data);
+            const fullHtml = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${inputFile.replace('.md', '')}</title>
+    
+    <!-- Prism.js CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YP0V04PV0E"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-YP0V04PV0E');
+    </script>
+    <!-- End Google Analytics -->
+</head>
+<body>
+    <pre><code class="language-javascript">${htmlContent}</code></pre>
+    
+    <!-- Prism.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+</body>
+</html>
+                `;
             // Write the HTML to a file
-            fs.writeFile(outputFile, html, (err) => {
+            fs.writeFile(outputFile, fullHtml, (err) => {
                 if (err) {
                     console.error(`Error writing HTML file ${outputFile}: ${err}`);
                     return;
