@@ -1,0 +1,25 @@
+h1 {
+    color: orange;
+    /* color: lightgray; */
+}
+
+h2 {
+    color: lightskyblue;
+}
+
+h3 {
+    color: yellowgreen;
+}
+
+body {
+    color: lightgray;
+    background-color: #323232;
+}
+
+pre {
+    background-color: #2E2E2E;
+}
+
+code {
+    background-color: transparent;
+}

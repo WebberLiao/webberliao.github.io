@@ -1,0 +1,14 @@
+{
+  "name": "my-markdown-page",
+  "version": "1.0.0",
+  "description": "A simple GitHub Pages site using Markdown converted to HTML.",
+  "main": "build.js",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "dependencies": {
+    "markdown-to-html": "^0.0.3"
+  },
+  "author": "webber.liao",
+  "license": "MIT"
+}
