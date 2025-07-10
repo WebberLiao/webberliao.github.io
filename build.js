@@ -30,7 +30,7 @@ const convertMarkdownToHtml = (inputFile, outputFile) => {
     
     <!-- Prism.js CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />
-    
+    <link rel="stylesheet" href="styles.css">
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YP0V04PV0E"></script>
     <script>
@@ -42,13 +42,13 @@ const convertMarkdownToHtml = (inputFile, outputFile) => {
     <!-- End Google Analytics -->
 </head>
 <body>
-    <pre><code class="language-javascript">${htmlContent}</code></pre>
+    <div id="content">${htmlContent}</div>
     
-    <!-- Prism.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
 </body>
 </html>
                 `;
+            // Highlight the code blocks
+            Prism.highlightAll();
             // Write the HTML to a file
             fs.writeFile(outputFile, fullHtml, (err) => {
                 if (err) {
