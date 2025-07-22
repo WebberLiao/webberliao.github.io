@@ -27,9 +27,9 @@ Syslog Severity Levels are, in order of increasing severity:
 - Debug (7):  
     Description: Detailed information used for debugging purposes. This level is typically used by developers or system administrators.
     Example: Detailed logs of a process execution or variable values during execution.
----
-# Signals
 
+ 
+# Signals
 | Signal   | Code    | Feature | Description |  
 | :---     | :---:   | :--- | :--- |  
 | SIGHUP   | 1       | 終止進程 | 終止進程 |
@@ -51,3 +51,20 @@ Syslog Severity Levels are, in order of increasing severity:
 | SIGTSTP  | 20      | 停止進程 | 停止進程 |
 | SIGTTIN  | 21      | 後台進程請求輸入 | 後台進程請求輸入 |
 | SIGTTOU  | 22      | 後台進程請求輸出 | 後台進程請求輸出 |
+
+ 
+# Special Files & Folders
+## /etc/rc.local
+It is used to run commands or start services that should be initiated after all other system services have been started.
+
+## /etc/diag.sh
+It may contain commands and checks to help troubleshoot system issues or gather information about the system's status.
+
+## qsdk/feeds/package
+Contains additional software packages for inclusion in the QSDK build, allowing for customization and integration of various components.
+
+## qsdk/package
+Contains core packages essential for the QSDK, including base system components and configuration files.
+
+## qsdk/qca/feeds/package
+Contains QCA-specific packages tailored for Qualcomm Atheros hardware, including drivers and utilities optimized for QCA chipsets.

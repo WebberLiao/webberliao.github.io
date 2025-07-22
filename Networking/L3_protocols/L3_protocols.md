@@ -80,6 +80,7 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 ```
 
+
 # DHCP
 ## Option 43
 Option 43 is a user-defined option, indicating vendor-specific information.
@@ -125,3 +126,53 @@ config dhcp 'wan'
 # Restart odhcpd
 /etc/init.d/odhcpd restart
 ```
+
+
+# IS-IS
+Intermediate System to Intermediate System  
+IS-IS is a link-state routing protocol used in large networks to facilitate the exchange of routing information between routers. It was originally developed for use in the ISO (International Organization for Standardization) networking model but has since been adapted for use in IP networks.
+## Features
+- Hierarchical Routing:  
+    IS-IS supports a two-level hierarchy (Level 1 and Level 2) to optimize routing within and between areas.
+- Scalability:  
+    It is designed to handle large networks efficiently.
+- Protocol Independence:  
+    IS-IS can carry multiple network layer protocols, making it versatile for different types of traffic.
+- Fast Convergence:  
+    It quickly adapts to changes in the network topology, which is crucial for maintaining efficient routing.
+
+
+
+
+# VRRP
+Virtual Router Redundancy Protocol  
+VRRP is a network protocol that provides high availability by allowing multiple routers to work together to present the appearance of a single virtual router to the end devices.
+## Features
+- Redundancy:  
+    VRRP enables automatic failover to a backup router if the primary router fails, ensuring continuous network availability.
+- Virtual IP Address:  
+    A virtual IP address is shared among the routers, allowing devices to send traffic to this address without needing to know the specific router's IP.
+- Master/Backup Roles:  
+    One router is elected as the master (active) router, while others remain in a backup state, ready to take over if needed.
+- Interoperability:  
+    It is compatible with various routing protocols and can be used in different network environments.
+
+
+
+
+# PIM
+Protocol Independent Multicast
+PIM is a multicast routing protocol used to efficiently route multicast traffic across a network. It is termed "protocol independent" because it can operate over any underlying unicast routing protocol.
+## Features
+- Multicast Support:  
+    PIM is designed to manage the distribution of multicast data streams, such as video or audio broadcasts.
+- Scalability:  
+    It can scale to support large numbers of multicast groups and receivers.
+- Modes of Operation:  
+    PIM has several modes, including PIM Sparse Mode (PIM-SM) for networks with sparse receivers and PIM Dense Mode (PIM-DM) for networks with many receivers.
+- Flexibility:  
+    It can work with various unicast routing protocols, making it adaptable to different network architectures.
+
+
+
+# End of the file

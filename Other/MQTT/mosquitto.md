@@ -2,6 +2,38 @@
 
 # mosquitto
 
+## Feature
+### Listening Ports
+The server listens on the following ports:
+- 1883 : MQTT, unencrypted, unauthenticated 
+- 1884 : MQTT, unencrypted, authenticated 
+- 8883 : MQTT, encrypted, unauthenticated 
+- 8884 : MQTT, encrypted, client certificate required 
+- 8885 : MQTT, encrypted, authenticated 
+- 8886 : MQTT, encrypted, unauthenticated 
+- 8080 : MQTT over WebSockets, unencrypted, unauthenticated 
+- 8081 : MQTT over WebSockets, encrypted, unauthenticated 
+- 8090 : MQTT over WebSockets, unencrypted, authenticated 
+- 8091 : MQTT over WebSockets, encrypted, authenticated
+
+### WebSocket
+``` Shell
+# Setting the configuration
+# path: /etc/mosquitto/conf.d/default.conf
+listener 8083  # Add WebSocket one more
+websockets
+certfile /etc/letsencrypt/live/mqtt.example.com/cert.pem
+cafile /etc/letsencrypt/live/mqtt.example.com/chain.pem
+keyfile /etc/letsencrypt/live/mqtt.example.com/privkey.pem
+
+# If the firewall is enabled, remember to open the port
+sudo ufw allow 8083
+
+# After setup, restart the service
+sudo systemctl restart mosquitto
+```
+
+
 ## Struct
 ``` C
 struct mosquitto_message{

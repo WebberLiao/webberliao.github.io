@@ -552,6 +552,115 @@ trait Drawable { fn draw(&self); }
 ```
 
 # Other
+## Linked List
+``` Rust
+// Define a Node struct
+#[derive(Debug)]
+struct Node<T> {
+    data: T,
+    next: Option<Box<Node<T>>>, // Use Box to allocate nodes on the heap
+}
+
+// Define a LinkedList struct
+#[derive(Debug)]
+struct LinkedList<T> {
+    head: Option<Box<Node<T>>>, // Head of the list
+}
+
+impl<T> LinkedList<T> {
+    // Create a new empty linked list
+    fn new() -> Self {
+        LinkedList { head: None }
+    }
+
+    // Insert a new node at the beginning
+    fn insert_at_beginning(&mut self, data: T) {
+        let new_node = Box::new(Node {
+            data,
+            next: self.head.take(), // Take the current head and set it as the next of the new node
+        });
+        self.head = Some(new_node);
+    }
+
+    // Insert a new node at the end
+    fn insert_at_end(&mut self, data: T) {
+        let new_node = Box::new(Node {
+            data,
+            next: None,
+        });
+
+        if let Some(ref mut head) = self.head {
+            let mut current = head;
+            while let Some(ref mut next_node) = current.next {
+                current = next_node;
+            }
+            current.next = Some(new_node);
+        } else {
+            self.head = Some(new_node);
+        }
+    }
+
+    // Insert a new node at a specific position
+    fn insert_at_position(&mut self, data: T, position: usize) {
+        if position == 0 {
+            self.insert_at_beginning(data);
+            return;
+        }
+
+        let new_node = Box::new(Node {
+            data,
+            next: None,
+        });
+
+        let mut current = &mut self.head;
+        for _ in 0..position - 1 {
+            if let Some(ref mut node) = current {
+                current = &mut node.next;
+            } else {
+                // If the position is out of bounds, we can just return
+                return;
+            }
+        }
+
+        new_node.next = current.take(); // Take the current node at the position
+        *current = Some(new_node); // Insert the new node
+    }
+	
+	// Calculate the size of the linked list
+    fn size(&self) -> usize {
+        let mut count = 0;
+        let mut current = &self.head;
+        while let Some(ref node) = current {
+            count += 1;
+            current = &node.next;
+        }
+        count
+    }
+
+    // Display the linked list
+    fn display(&self) {
+        let mut current = &self.head;
+        while let Some(ref node) = current {
+            print!("{} -> ", node.data);
+            current = &node.next;
+        }
+        println!("None");
+    }
+}
+
+// Example usage
+fn main() {
+    let mut linked_list = LinkedList::new();
+    linked_list.insert_at_end(1);
+    linked_list.insert_at_end(2);
+    linked_list.insert_at_beginning(0);
+    linked_list.insert_at_position(1.5, 2); // Insert 1.5 at position 2
+    linked_list.display(); // Output: 0 -> 1 -> 1.5 -> 2 -> None
+	let node_size = linked_list.size();
+	println!("Size of the linked list: {}", node_size); // Output: Size of the linked list: 4
+}
+```
+
 ## Ownership
 Numbers, characters and booleans are copied, not moved.
 But &str and String would be moved.
@@ -591,6 +700,7 @@ name_ref.push_str(" Doe");
 println!("{}", name_ref); // John Doe 
 println!("{}", name); // John Doe 
 ```
+
 ## Other
 ```Rust
 let chr1 = '['.to_string();

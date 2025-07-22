@@ -45,3 +45,9 @@ sudo apt install -y youtube-dl
 
 youtube-dl -x --audio-format mp3 <YouTube-URL>
 ```
+
+## date
+Show current datetime
+``` Shell
+date "+%Y-%m-%d %H:%M:%S"
+```

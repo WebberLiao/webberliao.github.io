@@ -23,3 +23,8 @@ pre {
 code {
     background-color: #2E2E2E;
 }
+
+hr {
+    border: 5px solid #554099;
+    border-radius: 5px;
+}
