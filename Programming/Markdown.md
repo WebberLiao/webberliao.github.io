@@ -2,12 +2,12 @@
 
 ## Headings
 <!-- Headings -->
-# Heading 1
-## Heading 2
-### Heading 3
-#### Heading 4
-##### Heading 5
-###### Heading 6
+# Heading1
+## Heading2
+### Heading3
+#### Heading4
+##### Heading5
+###### Heading6
 
 ## Text
 <!-- Text -->
@@ -62,8 +62,13 @@ _Italic_
 
 <!-- Link -->
 ## Link
-[Link Text](Link-URL)
-[Link Text](Link-URL "Link Tip")
+[DuckDuckGo](https://duckduckgo.com/)  
+[DuckDuckGo](https://duckduckgo.com/ "It is DuckDuckGo")  
+### It is internal-link, also can be the table of content.
+[Link Text](./C.md)  
+[Link Text](/OpenWrt/OpenWrt.md)  
+[Link Text](#quote)  
+[Link Text](./Python.md#linked-list)
 
 <!-- Image -->
 ## Image
@@ -73,12 +78,12 @@ _Italic_
 ## Element Mapping 
 | Markdown Element | HTML Element | Description | 
 | :--- | :--- | :--- |  
-| # Header 1 | <h1>Header 1</h1> | Level 1 heading |  
-| ## Header 2 | <h2>Header 2</h2> | Level 2 heading |  
-| ### Header 3 | <h3>Header 3</h3> | Level 3 heading |  
-| #### Header 4 | <h4>Header 4</h4> | Level 4 heading |  
-| ##### Header 5 | <h5>Header 5</h5> | Level 5 heading |  
-| ###### Header 6 | <h6>Header 6</h6> | Level 6 heading |  
+| # Header1 | <h1>Header1</h1> | Level 1 heading |  
+| ## Header2 | <h2>Header2</h2> | Level 2 heading |  
+| ### Header3 | <h3>Header3</h3> | Level 3 heading |  
+| #### Header4 | <h4>Header4</h4> | Level 4 heading |  
+| ##### Header5 | <h5>Header5</h5> | Level 5 heading |  
+| ###### Header6 | <h6>Header6</h6> | Level 6 heading |  
 | **bold text** | <strong>bold text</strong> | Bold text |  
 | *italic text* | <em>italic text</em> | Italic text |  
 | ~~strikethrough~~ | <del>strikethrough</del> | Strikethrough text |  

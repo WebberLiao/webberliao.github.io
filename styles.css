@@ -24,7 +24,19 @@ code {
     background-color: #2E2E2E;
 }
 
-hr {
+/* hr {
     border: 5px solid #554099;
     border-radius: 5px;
+} */
+hr {
+  border: none;
+  border-top: 8px double;
+  overflow: visible;
+  text-align: center;
+  height: 5px;
+}
+
+td, th {
+  border: 3px;
+  border-style: groove;
 }

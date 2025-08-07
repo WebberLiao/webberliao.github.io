@@ -80,6 +80,117 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 ```
 
+## BIND
+Berkeley Internet Name Domain
+
+### Install BIND9
+``` Shell
+sudo apt install bind9 bind9utils bind9-doc -y
+
+```
+
+### Config & Execute
+1. Config 
+   ``` Shell
+   sudo vi /etc/bind/named.conf.local
+   ```
+1. Create zone with a domain 
+   ``` Shell
+   zone "example.com" {
+    type master;
+    file "/etc/bind/db.example.com";
+    };
+   ```
+1. Create zone file 
+   ``` Shell
+   sudo cp /etc/bind/db.local /etc/bind/db.example.com
+   ```
+1. Setup the zone file (Sample) 
+   ``` Shell  
+   $TTL    604800
+    @       IN      SOA     ns.example.com. admin.example.com. (
+                            2               ; Serial
+                            604800          ; Refresh
+                            86400           ; Retry
+                            2419200         ; Expire
+                            604800 )        ; Negative Cache TTL
+    ;
+    @       IN      NS      ns.example.com.
+    @       IN      A       192.168.1.10   ; Your server's IP address
+    ns      IN      A       192.168.1.10   ; Your server's IP address
+    www     IN      A       192.168.1.10   ; Your server's IP address
+   ```
+1. Check Configuration syntax
+   ``` Shell
+   sudo named-checkconf
+   ```
+1. Start and enable BIND9  
+   ``` Shell
+   sudo systemctl start bind9
+    sudo systemctl enable bind9
+   ```
+1. Configure firewall  
+   ``` Shell
+   ufw allow 53
+   ```
+1. Install dnsutils to test the DNS server
+   ``` Shell
+   sudo apt install dnsutils -y
+   ```
+1. Test by command as below
+   ``` Shell
+   dig @localhost example.com
+   ```
+1. Config client to use the DNS server
+   ``` Shell
+   sudo vi /etc/resolv.conf
+
+   nameserver {Your DNS server IP address}
+   ```
+1. Restart DNS service
+   ``` Shell
+   sudo systemctl restart bind9
+   ```
+
+
+
+## DoH
+DNS over HTTPS  
+It is a protocol that allows DNS resolution to be performed over the HTTPS protocol.  
+To use DoH, users typically need to configure their web browsers or operating systems to use a DoH-compatible DNS resolver.
+
+- Popular DoH Providers
+  - [Cloudflare](https://cloudflare-dns.com/dns-query)
+  - [Google](https://dns.google/dns-query)
+  - [Mozilla](https://mozilla.cloudflare-dns.com/dns-query)
+
+
+### Feature
+1. Privacy and Security  
+   - Encryption:  
+    DoH encrypts DNS queries, making it difficult for third parties (like ISPs or malicious actors) to intercept or monitor the DNS requests made by users.  
+   - Confidentiality:  
+    By using HTTPS, DoH helps protect user privacy by preventing eavesdropping on DNS queries.
+2. Integrity  
+   - Data Integrity:  
+    The use of HTTPS ensures that the data sent and received cannot be tampered with during transmission. This helps prevent DNS spoofing attacks.
+3. Bypassing Censorship
+   - Access to Blocked Content:  
+   Since DoH queries are sent over HTTPS, they can bypass certain types of censorship that rely on monitoring DNS traffic.
+4. Improved Performance
+   - Reduced Latency:  
+   In some cases, DoH can improve performance by allowing DNS queries to be resolved faster, especially when using a nearby DoH server.
+
+## Behavior
+1. Client Initiation:  
+   When a user wants to visit a website, their browser sends a DNS query to a DoH server instead of a traditional DNS server.
+2. HTTPS Request:  
+   The DNS query is sent as an HTTPS request, which is encrypted.
+3. Resolution:  
+    The DoH server processes the request, resolves the domain name to an IP address, and sends the response back to the client over the secure connection.
+4. Accessing the Website:  
+   The client receives the IP address and can then connect to the desired website.
+
 
 # DHCP
 ## Option 43
@@ -174,5 +285,117 @@ PIM is a multicast routing protocol used to efficiently route multicast traffic 
     It can work with various unicast routing protocols, making it adaptable to different network architectures.
 
 
+# BGP
+## Features
+Border Gateway Protocol
+It is a standardized exterior gateway protocol used to exchange routing information between different autonomous systems (AS) on the internet.
+It is a critical protocol for the functioning of the internet, enabling efficient and reliable routing between different autonomous systems. Its ability to handle complex routing policies, scalability, and security features.
+It provides load balancing, redundancy and failover.
 
-# End of the file
+- Path Vector Protocol
+  - Path Information:  
+    BGP uses a path vector mechanism to maintain the path information that gets updated dynamically as the network topology changes.
+    Each BGP router maintains a table of network paths, known as the BGP routing table.
+  - AS Path Attribute:  
+    BGP includes an AS path attribute that lists the ASes a route has traversed, 
+    helping to prevent routing loops and providing information about the route's origin.
+
+- Inter-Domain Routing
+  - Exterior Gateway Protocol:  
+    BGP is primarily used for inter-domain routing, meaning it facilitates routing between different autonomous systems, 
+    as opposed to interior gateway protocols (IGPs) like OSPF or EIGRP, which operate within a single AS.
+  - Policy-Based Routing:  
+    BGP allows network administrators to implement routing policies based on various attributes, 
+    enabling fine-grained control over route selection.
+
+- Route Selection Process
+BGP employs a multi-step process to select the best route among multiple available paths.
+  - Highest Local Preference:  
+    Routes with the highest local preference value are preferred.
+  - Shortest AS Path:  
+    If multiple routes exist, the one with the shortest AS path is chosen.
+  - Origin Type:  
+    Routes are classified as IGP, EGP, or incomplete, with IGP being preferred.
+  - MED (Multi-Exit Discriminator):  
+    If routes are from the same AS, the one with the lowest MED value is preferred.
+  - eBGP over iBGP:  
+    Routes learned from eBGP peers are preferred over those learned from iBGP peers.
+
+- Security Features
+  - BGP Session Authentication:  
+    BGP supports authentication mechanisms to secure BGP sessions between peers, helping to prevent unauthorized route updates.
+  - Route Filtering:  
+    Network operators can implement route filtering to control which routes are accepted or advertised, enhancing security and stability.
+
+- Scalability
+  - Scalable Design:  
+    BGP is designed to handle a large number of routes, making it suitable for the vast and complex structure of the internet.
+  - Hierarchical Structure:  
+    BGP's design allows for a hierarchical routing structure, which helps manage routing information efficiently.
+
+### Messsage Types
+| Type | Description |
+| :--- | :--- |
+| OPEN | Initiates a BGP session and establishes parameters for communication. |
+| UPDATE | Used to advertise new routes or withdraw previously advertised routes. |
+| KEEPALIVE | Sent periodically to maintain the connection and ensure that the peer is still reachable. |
+| NOTIFICATION | Indicates an error or issue with the BGP session, prompting the termination of the connection. |  
+
+
+# EIGRP
+Enhanced Interior Gateway Routing Protocol
+EIGRP is a Cisco proprietary routing protocol that combines the advantages of both distance vector and link-state protocols. It is designed to facilitate efficient routing within an autonomous system (AS) and is widely used in enterprise networks.
+
+## Features
+- Hybrid Routing Protocol
+  - Distance Vector and Link-State:  
+    EIGRP is often referred to as a hybrid protocol because it incorporates features from both distance vector protocols (like RIP) and link-state protocols (like OSPF).
+    It uses distance vector principles for routing decisions while maintaining a topology map of the network.
+  - Diffusing Update Algorithm (DUAL):  
+    EIGRP uses DUAL to calculate the best path to a destination and to ensure loop-free routing.
+    DUAL allows EIGRP to quickly converge and maintain optimal routing paths.
+
+- Metrics and Path Selection
+  - Composite Metric:
+    EIGRP uses a composite metric based on several factors, including bandwidth, delay, load, and reliability.
+    The formula for calculating the EIGRP metric is: Metric = ( 10^7 / minimum bandwidth​ + total delay ) × 256.
+  - Feasible Successor:
+    EIGRP maintains a list of feasible successors, which are backup routes that can be used if the primary route fails.
+    This allows for rapid failover and improved network reliability.
+
+- Fast Convergence
+  - Rapid Convergence:  
+    EIGRP is known for its fast convergence times, which are achieved through the use of DUAL.
+    When a topology change occurs, EIGRP quickly recalculates the best paths and updates the routing table.
+  - Partial Updates:
+    Instead of sending full routing updates, EIGRP sends only the changes (partial updates) to its neighbors, 
+    reducing bandwidth usage and improving efficiency.
+
+- Security Features
+  - Authentication:  
+    EIGRP supports authentication mechanisms to secure routing updates, 
+    ensuring that only authorized routers can participate in the routing process.
+  - Route Filtering:  
+    Network administrators can implement route filtering to control 
+    which routes are advertised or accepted, enhancing security and stability.
+
+- Scalability
+  - Hierarchical Design:
+    EIGRP is designed to scale well in large networks, supporting thousands of routes 
+    and multiple routers without significant performance degradation.
+  - Support for Multiple Protocols:
+    EIGRP can operate over various network layer protocols, including IPv4 and IPv6, 
+    making it versatile for different network environments.
+
+### Messsage Types
+| Type | Description |
+| :--- | :--- |
+| Hello | Used to discover and maintain neighbor relationships. |
+| Update | Contains routing information and is sent when there are changes in the network topology. |
+| Query | Sent to request routing information from neighbors when a route is lost. |
+| Reply | Sent in response to a query, providing the requested routing information. |
+| ACK | Confirms the receipt of EIGRP messages. |
+
+
+
+

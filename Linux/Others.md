@@ -1,5 +1,11 @@
 <link rel="stylesheet" type="text/css" href="../styles.css">
 
+# Environment Variables
+``` Shell
+# Numer of processes
+$(nproc)
+```
+
 # Syslog
 Syslog defines eight standard severity levels, each represented by a numeric value and a corresponding label.
 Syslog Severity Levels are, in order of increasing severity:

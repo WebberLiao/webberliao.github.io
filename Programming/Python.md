@@ -13,6 +13,7 @@ pip show {Package_Name}
 
 
 ```
+
 ## Packages
 ``` Shell
 axios               # HTTP request
@@ -22,6 +23,12 @@ yfinance            # Yahoo finance
 Flask               # Flask
 Flask-Cors          # Flask CORS
 Flask-SQLAlchemy    # Flask SQL management
+```
+
+# Commands
+``` Shell
+# Execute the python file
+python file.py
 ```
 
 # Linked List
@@ -137,7 +144,75 @@ for symbol in stock_symbols:
 
 [Link]("https://ranaroussi.github.io/yfinance/reference/api/yfinance.download.html#yfinance.download")
 
+# Ethernet Analysis - scapy
+## install
+``` Shell
+pip install scapy
+```
 
 
+## Command
+``` Shell
+# Enter scapy mode
+scapy
 
-# End of the file
+# Load contrib
+# load_contrib("<Protocol>")
+load_contrib("lldp")
+
+# Read capture
+# pkts=rdpcap("<FileName>")
+pkts=rdpcap("R670_LLDP_2.cap")
+
+# Get packet by index
+# p=pkts[<index>]
+p=pkts[0]
+
+# Check layers
+# <Layer> in p
+IP in p
+Ether in p
+LLDPDU in p
+
+# Show layers in packet
+ls(p)
+
+# Check layer existed
+# p.haslayer(<LayerType>)
+p.haslayer(Ether) # Check Ethernet Header
+p.haslayer(LLDPDUChassisID) # Check LLDP Chassis ID TLV
+
+# Get layer
+# p.getlayer(<LayerType>)
+l2=p.getlayer(Ether) # Get Ethernet Header
+
+# Get value
+# l2.<field>
+ether_type=l2.type # Get EtherType
+
+# Exit scapy mode
+exit
+```
+
+
+## Sample Code
+``` Python
+from scapy.all import *
+from scapy.contrib.lldp import * # include LLDP
+
+```
+
+## Works with unittest
+``` Python
+python -m unittest unit_test.py
+```
+
+# Codes
+## Other
+- Single Underscore (_identifier):
+    Indicates that the variable or method is intended for internal use. It is a convention and does not prevent access.
+- Double Underscore (__identifier): 
+    Triggers name mangling to avoid naming conflicts in subclasses. It is intended for private use within a class.
+- Double Underscore Before and After (\_\_identifier\_\_): 
+    Reserved for special methods and attributes in Python. These should not be used for user-defined identifiers.
+

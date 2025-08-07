@@ -70,51 +70,88 @@ sudo iptables-save
 
 ```
 
-# managing customer premises equipment (CPE) in broadband networks.
-## TR369 (Application Layer Communications for CPE)
-- Purpose:
-    Introduces a framework for managing CPE devices using application layer protocols, enhancing the capabilities of TR-069.
-- Features:
-  - Enhanced Management:
-        Provides a more flexible and extensible management framework compared to TR-069.
-  - Support for Multiple Protocols:
-        Allows the use of various application layer protocols (e.g., HTTP/2, WebSockets) for communication.
-  - Data Model Flexibility:
-        Supports a more dynamic and extensible data model, enabling easier updates and additions of new features.
-  - Improved Performance:
-        Aims to reduce latency and improve the efficiency of device management operations.
-  - Interoperability with TR-069:
-        Designed to work alongside TR-069, allowing for a gradual transition to the new framework.
+# iPerf
+## Basic
+Open Source. Client Server structure. Monitor traffics. Default using port is 5201.
 
-## TR181 (User Services Profile)
-- Purpose:
-    Defines a data model for user services and their associated parameters, focusing on the services provided to end-users.
-- Features:
-  - Service Data Model:
-        Provides a structured way to represent user services, including broadband, voice, video, and data services.
-  - Quality of Service (QoS):
-        Includes parameters for managing QoS for different services to ensure performance and reliability.
-  - Service Configuration:
-        Allows for the configuration of user services, including settings for VoIP, IPTV, and internet access.
-  - User Experience Monitoring:
-        Supports monitoring of user experience metrics to help service providers improve service quality.
-  - Interoperability:
-        Ensures compatibility with various service types and devices, facilitating integration across different platforms.
+[**公用Server列表**](https://iperf.fr/iperf-servers.php)
 
-## TR069 (CWMP, CPE WAN Management Protocol)
-- Purpose:
-    Defines a protocol for remote management of CPE devices, such as routers and gateways, in broadband networks.
-- Features:
-  - Device Management:
-        Allows service providers to manage devices remotely, including configuration, monitoring, and diagnostics.
-  - Automatic Configuration:
-        Supports automatic provisioning of devices when they connect to the network.
-  - Firmware Management:
-        Enables remote firmware upgrades and updates.
-  - Event Notification:
-        Provides mechanisms for devices to notify the management system of events (e.g., status changes).
-  - Data Model:
-        Uses a hierarchical data model (XML-based) to represent device parameters and settings.
-  - Security:
-        Implements security features such as authentication and encryption for secure communication.
 
+## Install
+``` Shell
+sudo apt install iperf3
+
+# Check version
+iperf3 --version
+```
+
+## Commands
+``` Shell
+# Execute server mode
+iperf -s
+
+# Execute client mode
+iperf -c {Server IP}
+
+
+```
+
+### Common
+| option | description | Sample |
+| :--- | :--- | :--- |
+| -f [ k \| m \| K \| M ] | 以 Kbits, Mbits, KBytes, MBytes 為單位 ||
+| -i {number} | 顯示報告的間隔時間 (以秒為單位) | -i 10 |
+| -m | 顯示MTU的最大值 ||
+| -o {filename} | 產出報告及錯誤訊息至特定檔案 (json格式) | -o ./test_log.txt |
+| --log-file {filename} | 產出報告及錯誤訊息至特定檔案 (json格式) | --log-file ./test_log.txt |
+| -u | 使用 UDP 傳輸, 可檢查出遺失的封包樹吉jitter ||
+| -w {nubmer} | 指定 TCP frame 的大小, 預設是 8KB, 但 TCP 會自動調整 | -w 100M |
+| -C | 相容舊版本 ||
+| -M | 設定 TCP 的 MTU 的最大值 ||
+| -p | 設定特定的 port (5201 by default) | -p 9999 |
+| -B {IP address} | 綁定特定 IP 位址 | -B 192.168.1.98 |
+| -4 | 使用 IPv4 ||
+| -6 | 使用 IPv6 ||
+
+### Server
+| option | description | Sample |
+| :--- | :--- | :--- |
+| -D | 背景運作 ||
+| -U | 使用 UDP & 單一執行緒 ||
+
+### Client
+| option | description | Sample |
+| :--- | :--- | :--- |
+| -b {number} | 測試 UDP 的頻寬, 設定每秒傳送的速度, 必須在UDP模式 | -b 1G |
+| --bidir | 可雙向傳輸 (上傳跟下載) ||
+| -n {number} | 指定傳輸的大小 (bytes) ||
+| -r | 單獨進行雙向傳輸測試 ||
+| -t {number} | 設定測試時間的長度, 預設 10 秒 | -t 120 |
+| -F {file name} | 使用指定檔案做傳輸 ||
+| -I | 使用 stdin 做傳輸內容 ||
+| -T {number} | 設定 ttl 的值 ||
+| -R | 反向模式, 由 Server 傳送, Client 接收. ||
+| -J | 使用 json 格式輸出結果 ||
+| -O {number} | 忽略測試前 N 秒 | -O 15 |
+| --get-server-output | 從 Server 獲取測試結果 ||
+
+
+# Comparison
+LLDP (Link Layer Discovery Protocol)
+SSDP (Simple Service Discovery Protocol)
+NDP (Neighbor Discovery Protocol)
+| Feature/Aspect | LLDP | SSDP | NDP |
+| :--- | :--- | :--- | :--- |
+| **Layer** | Data Link Layer (Layer 2) | Application Layer (Layer 7) | Network Layer (Layer 3) |
+| **Purpose** | Device discovery and network topology information at Layer 2 | Service discovery for applications on a local network | Discovering other devices on the same network and determining their link-layer addresses |
+| **Protocol Type** | IEEE 802.1 standard | UPnP | IPv6 |
+| **Communication Method** | Unicast and multicast | Multicast (UDP) | Multicast (ICMPv6) |
+| **Use Cases** | Network management, topology mapping, and device identification | Smart home devices, media streaming, IoT applications | IPv6 address resolution, router discovery, and network configuration |
+| **Message Types** | LLDPDU (LLDP Data Units) | M-SEARCH, NOTIFY, BYE-BYE | Neighbor Solicitation, Neighbor Advertisement, Router Solicitation, Router Advertisement |
+| **Security Features** | Limited; relies on network security measures | Limited; requires additional security measures | Basic security features; relies on IPv6 security mechanisms |
+
+
+
+
+
+# 

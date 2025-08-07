@@ -8,7 +8,6 @@
 - Actions:  
     Operations that occur as a result of entering a state or during a transition.
 
----
 
 ## Example in C
 ``` C
@@ -87,7 +86,7 @@ void handle_event(PortState *state, Event event) {
 }
 ```
 
----
+
 
 # Callback Function
 
@@ -120,7 +119,3 @@ int main() {
 }
 
 ```
-
----
-
-# ---

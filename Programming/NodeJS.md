@@ -31,6 +31,9 @@ npm install react-router-dom@5
 
 # Check the package
 npm list {Package_Name}
+
+# execute
+npm start
 ```
 
 ### Packages

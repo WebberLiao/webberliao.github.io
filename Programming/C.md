@@ -2,6 +2,14 @@
 
 # C
 
+## Other
+- Single Underscore (_identifier):
+    Generally used for internal or private identifiers. It is acceptable to use in your own code, but it is a good practice to limit its use to avoid confusion.
+- Double Underscore (__identifier):
+    Reserved for the implementation. Avoid using these in your own code to prevent conflicts with compiler or library identifiers.
+- Double Underscore Before and After (\_\_identifier\_\_):
+    Also reserved for the implementation. These should not be used in user-defined identifiers.
+
 ## IPv4, Number to String
 ``` C
 #include <winsock.h>
