@@ -136,7 +136,7 @@ iperf -c {Server IP}
 | --get-server-output | 從 Server 獲取測試結果 ||
 
 
-# Comparison
+# Discovery Protocol Comparison
 LLDP (Link Layer Discovery Protocol)
 SSDP (Simple Service Discovery Protocol)
 NDP (Neighbor Discovery Protocol)
@@ -150,8 +150,14 @@ NDP (Neighbor Discovery Protocol)
 | **Message Types** | LLDPDU (LLDP Data Units) | M-SEARCH, NOTIFY, BYE-BYE | Neighbor Solicitation, Neighbor Advertisement, Router Solicitation, Router Advertisement |
 | **Security Features** | Limited; relies on network security measures | Limited; requires additional security measures | Basic security features; relies on IPv6 security mechanisms |
 
-
-
+# VLAN Comparison
+| Item | VLAN | interface VLAN |
+| :--- | :--- | :--- |
+| Operator | L2 | L3 |
+| Routing | No | Enable |
+| IP Address | No | IP Address |
+| Communication | Isolates traffic | Facilitates inter-VLAN routing |
+| Use case | Network segmentation, Traffic, Security implementation | Default gateway configuration, Routing |
 
 
 # 

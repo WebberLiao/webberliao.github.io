@@ -1,6 +1,29 @@
 <link rel="stylesheet" type="text/css" href="../../styles.css">
 
 # DNS
+## Use Case
+### On Switch
+- It can provide local name resolution for devices on the network.
+- By resolving names locally, the switch can reduce latency associated with querying external DNS servers.
+- It allows for centralized management of DNS records, making it easier to update and maintain device names and addresses.
+- The switch can log DNS queries, providing insights into network usage and helping with troubleshooting.
+- By using a local DNS server, organizations can limit exposure to external DNS servers,  
+  reducing the risk of DNS spoofing or other attacks.
+- The switch can implement access control policies for DNS queries, allowing only authorized devices to resolve names.
+- If the switch supports dynamic DNS updates, 
+  it can automatically update DNS records as IoT and smart devices join or leave the network.
+
+## Behavior
+1. Client Initiation:  
+   When a user wants to visit a website, their browser sends a DNS query to a DoH server instead of a traditional DNS server.
+2. HTTPS Request:  
+   The DNS query is sent as an HTTPS request, which is encrypted.
+3. Resolution:  
+    The DoH server processes the request, resolves the domain name to an IP address, and sends the response back to the client over the secure connection.
+4. Accessing the Website:  
+   The client receives the IP address and can then connect to the desired website.
+
+
 ## mDNS
 Multicast DNS. It is a zero-configuration service, using essentially the same programming interfaces, packet formats and operating semantics as unicast Domain Name System (DNS).
 - IPv4 address: 224.0.0.251
@@ -180,17 +203,6 @@ To use DoH, users typically need to configure their web browsers or operating sy
 4. Improved Performance
    - Reduced Latency:  
    In some cases, DoH can improve performance by allowing DNS queries to be resolved faster, especially when using a nearby DoH server.
-
-## Behavior
-1. Client Initiation:  
-   When a user wants to visit a website, their browser sends a DNS query to a DoH server instead of a traditional DNS server.
-2. HTTPS Request:  
-   The DNS query is sent as an HTTPS request, which is encrypted.
-3. Resolution:  
-    The DoH server processes the request, resolves the domain name to an IP address, and sends the response back to the client over the secure connection.
-4. Accessing the Website:  
-   The client receives the IP address and can then connect to the desired website.
-
 
 # DHCP
 ## Option 43
@@ -399,3 +411,10 @@ EIGRP is a Cisco proprietary routing protocol that combines the advantages of bo
 
 
 
+
+# CoAP
+Constrained Application Protocol
+Lightweight HTTP-like protocol, UDP-based, Low overhead.
+Supports DTLS, Supports multicast
+
+## Feature

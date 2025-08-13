@@ -74,3 +74,9 @@ Contains core packages essential for the QSDK, including base system components 
 
 ## qsdk/qca/feeds/package
 Contains QCA-specific packages tailored for Qualcomm Atheros hardware, including drivers and utilities optimized for QCA chipsets.
+
+# Turn on Flow
+Turn on => bootloader => init external devices
+=> ROM => Linux Kernel => roofs, bootfs, device tree...etc.
+=> Drivers (ETH, I2C, SPI...etc.) => OS
+

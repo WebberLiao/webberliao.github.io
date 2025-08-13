@@ -70,14 +70,23 @@ tar -xvf Archive -C /home/user/new/location/
 
 ## find
 ``` Shell
-# find <search_location> [-type f/l/d] [-name "<pattern>"] [-exec <behavior>] [-sort r]
+# find <search_location> [-type f/l/d] [-name "<pattern>"] [-exec <behavior>] [-sort r] [-print]
 # Delete all .sh file in current repository
 # [-type f/l/d] : Filter the type of file (f:file, l: link, d:directory)
 # [-name "<pattern>"] : Filter by name
-# [-exec <behavior>] : if existed then Execute the command.
+# [-exec <behavior> {}\;] : if the file existed then execute the command.
 # [-sort r] : Reverse sort
 # [-ls] : List more information
+# [-print] : Show file path
 find . -type f -name "*.sh" -exec rm {} \;
+
+# Sample for using your verbose output 
+find <search_location> -name "<pattern>" -type f | while read file; do 
+    echo "File Path: $file"
+    echo "File Contents:"
+    cat "$file"
+    echo "-------------------"
+done
 ```
 
 # Busybox

@@ -11,6 +11,10 @@ cat feeds.conf.default
 ## Audio
 
 
+# QCA
+## Kernel
+
+
 # Other
 ## reboot
 - Location: qca/src/linux-Version/kernel/reboot.c
