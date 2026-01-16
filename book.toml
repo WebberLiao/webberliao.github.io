@@ -1,0 +1,23 @@
+[book]
+authors = ["Webber Liao"]
+language = "zh-TW"
+title = "Webber's notes"
+src = "src"
+
+[build]
+build-dir = "book"
+
+[output.html]
+theme = "theme"
+
+[output.html.search]
+enable = true
+limit-results = 50
+teaser-word-count = 24
+use-boolean-and = true
+boost-title = 3
+boost-hierarchy = 2
+boost-paragraph = 1
+expand = true
+heading-split-level = 3
+
