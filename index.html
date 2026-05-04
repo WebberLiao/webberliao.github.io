@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Webber Liao — 履歷</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080b10;
+    --surface: #0f1318;
+    --surface2: #161b24;
+    --border: #1c2333;
+    --border2: #242d3e;
+    --cyan: #22d3ee;
+    --blue: #3b82f6;
+    --green: #34d399;
+    --amber: #fbbf24;
+    --slate: #94a3b8;
+    --muted: #475569;
+    --text: #e2e8f0;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Noto Sans TC', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes lineGrow {
+    from { width: 0; }
+    to   { width: 100%; }
+  }
+
+  @keyframes blink {
+    0%,100% { opacity: 1; } 50% { opacity: 0; }
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse 60% 50% at 20% 0%, rgba(34,211,238,0.05) 0%, transparent 55%),
+      radial-gradient(ellipse 40% 30% at 90% 80%, rgba(59,130,246,0.04) 0%, transparent 50%);
+  }
+
+  /* ── LAYOUT ─────────────────────────────────── */
+  .wrapper {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 32px 64px;
+  }
+
+  /* ── HEADER ─────────────────────────────────── */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: end;
+    padding-bottom: 32px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--cyan);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .hero-label::before {
+    content: '';
+    width: 24px; height: 1px;
+    background: var(--cyan);
+  }
+
+  h1.name {
+    font-size: 52px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+
+  h1.name span {
+    color: var(--cyan);
+    position: relative;
+  }
+
+  .hero-title {
+    font-size: 16px;
+    color: var(--slate);
+    font-weight: 400;
+    margin-bottom: 20px;
+    letter-spacing: 0.01em;
+  }
+
+  .contact-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    list-style: none;
+  }
+
+  .contact-list li {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--slate);
+  }
+
+  .contact-list li .icon {
+    width: 14px; height: 14px;
+    opacity: 0.6;
+  }
+
+  .contact-list a {
+    color: var(--slate);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .contact-list a:hover { color: var(--cyan); }
+
+  /* Location badge */
+  .location-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+  }
+
+  .city-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(52,211,153,0.08);
+    border: 1px solid rgba(52,211,153,0.2);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--green);
+  }
+
+  .status-dot {
+    width: 6px; height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: blink 2s infinite;
+  }
+
+  /* ── SECTION TITLE ───────────────────────────── */
+  .section {
+    margin-bottom: 36px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .section:nth-child(2) { animation-delay: 0.1s; }
+  .section:nth-child(3) { animation-delay: 0.2s; }
+  .section:nth-child(4) { animation-delay: 0.3s; }
+  .section:nth-child(5) { animation-delay: 0.4s; }
+
+  .section-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .section-heading h2 {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    white-space: nowrap;
+  }
+
+  .section-heading .line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .section-heading .num {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+  }
+
+  /* ── EXPERIENCE ──────────────────────────────── */
+  .exp-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 0 28px;
+    margin-bottom: 28px;
+    position: relative;
+  }
+
+  .exp-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 199px;
+    top: 0; bottom: -14px;
+    width: 1px;
+    background: var(--border);
+  }
+
+  .exp-left {
+    padding-top: 3px;
+    text-align: right;
+    border-right: 1px solid var(--border2);
+    padding-right: 20px;
+  }
+
+  .exp-company {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .exp-period {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .exp-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 3px;
+    border: 1px solid var(--border2);
+    color: var(--muted);
+  }
+
+  .exp-right { padding-top: 2px; }
+
+  .exp-role {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .exp-role::before {
+    content: '';
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--cyan);
+    flex-shrink: 0;
+  }
+
+  .exp-dot-current::before { background: var(--green) !important; box-shadow: 0 0 8px rgba(52,211,153,0.5); }
+
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .exp-bullets li {
+    font-size: 13px;
+    color: var(--slate);
+    line-height: 1.6;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .exp-bullets li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--cyan);
+    font-size: 10px;
+    top: 3px;
+  }
+
+  .exp-bullets li strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* achievement highlight */
+  .exp-achievement {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: rgba(34,211,238,0.04);
+    border: 1px solid rgba(34,211,238,0.12);
+    border-left: 3px solid var(--cyan);
+    border-radius: 0 6px 6px 0;
+  }
+
+  .exp-achievement-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--cyan);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+
+  .exp-achievement p {
+    font-size: 12px;
+    color: var(--slate);
+    line-height: 1.6;
+  }
+
+  /* ── SKILLS ──────────────────────────────────── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .skill-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    transition: border-color 0.2s;
+  }
+
+  .skill-card:hover { border-color: var(--border2); }
+
+  .skill-card-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .skill-card-title span {
+    font-size: 14px;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 4px;
+    border: 1px solid var(--border2);
+    color: var(--slate);
+    background: var(--surface2);
+  }
+
+  .tag.primary {
+    border-color: rgba(34,211,238,0.3);
+    color: var(--cyan);
+    background: rgba(34,211,238,0.06);
+  }
+
+  .tag.secondary {
+    border-color: rgba(59,130,246,0.3);
+    color: #93c5fd;
+    background: rgba(59,130,246,0.06);
+  }
+
+  /* ── EDUCATION ───────────────────────────────── */
+  .edu-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 24px;
+  }
+
+  .edu-main {}
+  .edu-school { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .edu-dept { font-size: 13px; color: var(--slate); }
+
+  .edu-right { text-align: right; }
+  .edu-year {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--cyan);
+    line-height: 1;
+  }
+  .edu-year-label { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+
+  /* ── PROJECTS ────────────────────────────────── */
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    transition: border-color 0.2s;
+  }
+
+  .project-card:hover { border-color: rgba(34,211,238,0.25); }
+
+  .project-name { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 4px; }
+  .project-desc { font-size: 12px; color: var(--slate); line-height: 1.5; }
+
+  .project-link {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--cyan);
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 5px 12px;
+    border: 1px solid rgba(34,211,238,0.3);
+    border-radius: 5px;
+    transition: background 0.2s;
+    flex-shrink: 0;
+  }
+
+  .project-link:hover { background: rgba(34,211,238,0.08); }
+
+  /* ── FOOTER ──────────────────────────────────── */
+  .resume-footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  @media print {
+    body { background: #fff; color: #111; }
+    .hero, .section { animation: none; }
+  }
+
+  @media (max-width: 700px) {
+    h1.name { font-size: 36px; }
+    .hero { grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; }
+    .exp-item::after { display: none; }
+    .exp-left { text-align: left; border-right: none; border-bottom: 1px solid var(--border2); padding: 0 0 10px; margin-bottom: 10px; }
+    .skills-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div>
+      <div class="hero-label">Software / Firmware / Network Engineer</div>
+      <h1 class="name">Webber Liao</h1>
+      <div class="hero-title">網路通訊協議開發 · 全端工具開發</div>
+      <ul class="contact-list">
+        <li>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          <a href="/cdn-cgi/l/email-protection#2f584a4d4d4a5d43464e401f1818196f48424e4643014c4042"><span class="__cf_email__" data-cfemail="c4b3a1a6a6a1b6a8ada5abf4f3f3f284a3a9a5ada8eaa7aba9">[webberliao0776@gmail.com]</span></a>
+        </li>
+      </ul>
+    </div>
+    <div class="location-badge">
+      <div class="city-tag">📍 台北, 台灣</div>
+      <div class="status-pill">
+        <div class="status-dot"></div>
+        目前在職
+      </div>
+    </div>
+  </header>
+
+  <!-- EXPERIENCE -->
+  <section class="section">
+    <div class="section-heading">
+      <h2>工作經歷</h2>
+      <div class="line"></div>
+      <div class="num">03 jobs</div>
+    </div>
+
+    <!-- Liteon -->
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-company">光寶科技 Liteon</div>
+        <div class="exp-period">2021 — 現在</div>
+        <div class="exp-tag">~4 年</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role exp-dot-current">軟體工程師</div>
+        <ul class="exp-bullets">
+          <li>維護與客製化交換器 <strong>L2 / L3 網路協議</strong>, 涵蓋 LLDP, STP, LACP 等標準實作</li>
+          <li>開發及維護設備管理用 <strong>RESTful API</strong>, 串接前後端管理介面</li>
+          <li>主導擴充完整實作 <strong>ERPS</strong></li>
+          <li>在 OpenWRT 協助整合 <strong>MQTT</strong> 協議</li>
+        </ul>
+        <div class="exp-achievement">
+          <div class="exp-achievement-label">✦ 核心成就</div>
+          <p>獨立完成 TR-069, 並確立與 ACS 的溝通.</p>
+          <p>獨立擴充 DHCP Server, DHCPv6 Server 及 DHCPv6 Server PD , 並協助整合 IEEE 1905.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 仲博 -->
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-company">仲博</div>
+        <div class="exp-period">2019 — 2020</div>
+        <div class="exp-tag">~1 年</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">資深管理師</div>
+        <ul class="exp-bullets">
+          <li>維護與客製化 <strong>SAP Business One</strong>, 支援業務流程自動化需求</li>
+          <li>管理 <strong>資料庫 (DB) </strong> 日常維運, 確保資料一致性與系統穩定性</li>
+          <li>設計與維護各類 <strong>管理報表</strong>, 提供決策層資料可視化支援</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Pintoo -->
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-company">Pintoo</div>
+        <div class="exp-period">2016 — 2019</div>
+        <div class="exp-tag">~3 年</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">軟體工程師</div>
+        <ul class="exp-bullets">
+          <li>開發與維護 <strong>ERP 系統</strong>, 整合訂單, 庫存, 財務等核心模組</li>
+          <li>建置 <strong>POS 銷售系統</strong>, 支援門市即時交易與報表匯出功能</li>
+          <li>參與系統需求訪談, 功能規格設計至交付的完整開發生命週期</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section">
+    <div class="section-heading">
+      <h2>技術能力</h2>
+      <div class="line"></div>
+      <div class="num">skills</div>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-card-title"><span>🌐</span> 網路協議</div>
+        <div class="skill-tags">
+          <span class="tag primary">LLDP</span>
+          <span class="tag primary">DHCPv4 / DHCPv6</span>
+          <span class="tag secondary">STP</span>
+          <span class="tag secondary">LACP</span>
+          <span class="tag">TR-069</span>
+          <span class="tag">MQTT</span>
+          <span class="tag">ERPS</span>
+          <span class="tag">IEEE 1905</span>
+          <span class="tag">L3 Routing</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-title"><span>💻</span> 程式語言</div>
+        <div class="skill-tags">
+          <span class="tag primary">C</span>
+          <span class="tag primary">Python</span>
+          <span class="tag primary">JavaScript</span>
+          <span class="tag secondary">Rust</span>
+          <span class="tag">C#</span>
+          <span class="tag">HTML / CSS</span>
+          <span class="tag">React</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-title"><span>🛠</span> 工具 / 平台</div>
+        <div class="skill-tags">
+          <span class="tag primary">RESTful API</span>
+          <span class="tag primary">GitHub</span>
+          <span class="tag">Docker</span>
+          <span class="tag">SQL</span>
+          <span class="tag">SAP</span>
+          <span class="tag"></span>
+          <span class="tag"></span>
+          <span class="tag">機房維護</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT -->
+  <section class="section">
+    <div class="section-heading">
+      <h2>個人專案</h2>
+      <div class="line"></div>
+      <div class="num">2 links</div>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <div class="project-card">
+        <div>
+          <div class="project-name">Networking Tool — IPv4 / IPv6 位址轉換工具</div>
+          <div class="project-desc">以 React 開發的網路工具集, 支援 IPv4 / IPv6 整數與位址互轉, DHCP 協議行為模擬, 部署於 GitHub Pages.展示對 RFC 規範的深入理解與前端工具化能力.</div>
+        </div>
+        <a class="project-link" href="https://webberliao.github.io/networkingtool/" target="_blank">↗ 查看專案</a>
+      </div>
+
+      <div class="project-card">
+        <div>
+          <div class="project-name">Notes — 技術筆記</div>
+          <div class="project-desc">以 mdBook 建置的個人技術筆記, 涵蓋網路協議, 系統開發與工程實務紀錄, 更新中.</div>
+        </div>
+        <a class="project-link" href="#" target="_blank">↗ 查看筆記</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="section">
+    <div class="section-heading">
+      <h2>學歷</h2>
+      <div class="line"></div>
+      <div class="num">education</div>
+    </div>
+
+    <div class="edu-row">
+      <div class="edu-main">
+        <div class="edu-school">國立虎尾科技大學</div>
+        <div class="edu-dept">資訊工程相關學系　學士</div>
+      </div>
+      <div class="edu-right">
+        <div class="edu-year">2012</div>
+        <div class="edu-year-label">畢業年份</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div cla
